@@ -98,7 +98,7 @@ export default function Home() {
               </div>
 
               <div className="relative hidden lg:block">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-brand-primary/20 via-brand-secondary/20 to-brand-accent/20 flex items-center justify-center">
+                <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 flex items-center justify-center">
                   <div className="text-center space-y-4 p-8">
                     <TrendingUp className="h-24 w-24 text-primary mx-auto" />
                     <p className="text-2xl font-semibold text-foreground">Building Future Leaders</p>
