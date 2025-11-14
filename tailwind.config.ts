@@ -59,6 +59,14 @@ export default {
           "4": "hsl(var(--chart-4) / <alpha-value>)",
           "5": "hsl(var(--chart-5) / <alpha-value>)",
         },
+        success: {
+          DEFAULT: "hsl(142 76% 38%)",
+          foreground: "hsl(0 0% 98%)",
+        },
+        warning: {
+          DEFAULT: "hsl(28 90% 52%)",
+          foreground: "hsl(0 0% 98%)",
+        },
         sidebar: {
           ring: "hsl(var(--sidebar-ring) / <alpha-value>)",
           DEFAULT: "hsl(var(--sidebar) / <alpha-value>)",
