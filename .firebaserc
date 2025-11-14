@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "bizbudz-e80a0"
+  },
+  "targets": {
+    "bizbudz-e80a0": {
+      "hosting": {
+        "app": [
+          "bizbudz-e80a0"
+        ]
+      }
+    }
+  }
+}

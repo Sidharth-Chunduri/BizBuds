@@ -14,7 +14,7 @@ import {
 
 export default function Home() {
   const successStory = {
-    name: "Sarah Chen",
+    name: "John Doe",
     story: "Started with zero business knowledge and built a sustainable e-commerce brand that now serves 500+ customers monthly. BizBudz gave me the community, resources, and mentorship I needed to turn my idea into reality.",
     achievement: "Founded EcoStyle - Sustainable Fashion Marketplace"
   };
