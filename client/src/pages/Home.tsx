@@ -31,36 +31,45 @@ export default function Home() {
       title: "Dashboard",
       description: "Track your learning progress",
       path: "/dashboard",
-      color: "text-chart-1"
+      color: "#459DEF"
     },
     {
       icon: Calendar,
       title: "Schedule",
       description: "Join live sessions",
       path: "/schedule",
-      color: "text-chart-2"
+      color: "#4567F0"
     },
     {
       icon: BookOpen,
       title: "Resources",
       description: "Explore courses & materials",
       path: "/resources",
-      color: "text-chart-3"
+      color: "#0533ED"
     },
     {
       icon: Users,
       title: "Explore",
       description: "Connect with students",
       path: "/explore",
-      color: "text-chart-4"
+      color: "#05C6ED"
     }
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex-1">
-        <section className="py-16 sm:py-24 bg-gradient-to-b from-primary/5 to-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section 
+          className="py-16 sm:py-24 relative"
+          style={{
+            backgroundImage: 'url(/background.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2">
@@ -89,7 +98,7 @@ export default function Home() {
               </div>
 
               <div className="relative hidden lg:block">
-                <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 via-chart-2/20 to-chart-3/20 flex items-center justify-center">
+                <div className="aspect-square rounded-2xl bg-gradient-to-br from-brand-primary/20 via-brand-secondary/20 to-brand-accent/20 flex items-center justify-center">
                   <div className="text-center space-y-4 p-8">
                     <TrendingUp className="h-24 w-24 text-primary mx-auto" />
                     <p className="text-2xl font-semibold text-foreground">Building Future Leaders</p>
@@ -177,7 +186,7 @@ export default function Home() {
                   <Link key={tile.path} href={tile.path}>
                     <Card className="h-full hover-elevate active-elevate-2 cursor-pointer transition-shadow" data-testid={`card-nav-${tile.title.toLowerCase()}`}>
                       <CardHeader>
-                        <Icon className={`h-10 w-10 ${tile.color} mb-3`} />
+                        <Icon className="h-10 w-10 mb-3" style={{ color: tile.color }} />
                         <CardTitle className="text-xl">{tile.title}</CardTitle>
                         <CardDescription className="text-base">
                           {tile.description}

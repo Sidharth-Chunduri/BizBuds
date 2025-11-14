@@ -20,19 +20,19 @@ export default function Dashboard() {
       label: "Sessions Attended",
       value: 12,
       icon: Calendar,
-      color: "text-chart-1"
+      color: "text-brand-primary"
     },
     {
       label: "Quizzes Completed",
       value: 7,
       icon: CheckCircle2,
-      color: "text-chart-3"
+      color: "text-brand-accent"
     },
     {
       label: "Learning Streak",
       value: "5 days",
       icon: Flame,
-      color: "text-chart-2"
+      color: "text-brand-secondary"
     }
   ];
 

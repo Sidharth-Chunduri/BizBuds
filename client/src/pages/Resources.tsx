@@ -27,7 +27,7 @@ export default function Resources() {
       description: "A student's journey from idea to launch, including mistakes and lessons learned.",
       uploader: "Alex Martinez",
       views: 1250,
-      thumbnailColor: "bg-chart-1/20"
+      thumbnailColor: "bg-brand-primary/20"
     },
     {
       id: "v2",
@@ -35,7 +35,7 @@ export default function Resources() {
       description: "Practical strategies for marketing your business without spending money.",
       uploader: "Jordan Lee",
       views: 892,
-      thumbnailColor: "bg-chart-2/20"
+      thumbnailColor: "bg-brand-secondary/20"
     },
     {
       id: "v3",
@@ -43,7 +43,7 @@ export default function Resources() {
       description: "Real examples from successful fundraising rounds and what made them work.",
       uploader: "Sam Chen",
       views: 2103,
-      thumbnailColor: "bg-chart-3/20"
+      thumbnailColor: "bg-brand-accent/20"
     },
     {
       id: "v4",
@@ -51,7 +51,7 @@ export default function Resources() {
       description: "Creating an amazing work environment even with limited resources.",
       uploader: "Taylor Brooks",
       views: 645,
-      thumbnailColor: "bg-chart-4/20"
+      thumbnailColor: "bg-brand-cyan/20"
     }
   ];
 

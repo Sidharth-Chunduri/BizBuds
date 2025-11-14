@@ -53,11 +53,18 @@ export default {
         },
         ring: "hsl(var(--ring) / <alpha-value>)",
         chart: {
-          "1": "hsl(var(--chart-1) / <alpha-value>)",
-          "2": "hsl(var(--chart-2) / <alpha-value>)",
-          "3": "hsl(var(--chart-3) / <alpha-value>)",
-          "4": "hsl(var(--chart-4) / <alpha-value>)",
-          "5": "hsl(var(--chart-5) / <alpha-value>)",
+          "1": "#459DEF",
+          "2": "#4567F0", 
+          "3": "#0533ED",
+          "4": "#05C6ED",
+          "5": "#C49DF5",
+        },
+        brand: {
+          primary: "#459DEF",
+          secondary: "#4567F0",
+          accent: "#0533ED", 
+          cyan: "#05C6ED",
+          purple: "#C49DF5",
         },
         success: {
           DEFAULT: "hsl(142 76% 38%)",
