@@ -1,0 +1,264 @@
+Build a responsive web app called **BizBudz** – a student-focused business learning hub.
+
+Overall requirements
+- Make the design **clean, modern, and simple** – think cards, plenty of white space, rounded corners, and a friendly student feel.
+- Prioritize **readability**: use a clear sans-serif font, a light background, and 2–3 main colors (for example: a white background, a soft blue primary, and an accent color like orange/green for buttons and highlights).
+- Use **consistent navigation** across all pages with a top navbar: logo on the left (“BizBudz”), main links on the right: *Home, Dashboard, Schedule, Resources, Explore, Join Now*.
+- The app should be **mobile-first and responsive** for desktop, tablet, and phone.
+- Implement using a modern stack such as **React + a simple CSS framework** (like Tailwind or minimal custom CSS). Focus on structure and dummy data; no real backend is necessary, but the UI should be wired up as if real data exists.
+
+Pages to implement (6 total)
+1. Home
+2. Dashboard
+3. Signup / Join Now
+4. Schedule
+5. Resources
+6. Explore
+
+Use dummy JSON/state for data such as sessions, courses, notes, quizzes, etc. Buttons and actions can log to console or open modals; they don’t need to be fully functional backends.
+
+---
+
+### 1. Home Page
+
+Goal: Introduce BizBudz, highlight student success, and guide users to other parts of the site.
+
+Layout:
+- **Hero section** at the top:
+  - Left: a short tagline like “BizBudz – Learn Business Together” with a one-sentence description.
+  - Right: a CTA button **“Join Now”** and a secondary button **“Browse Resources”**.
+- **Success Story section**:
+  - A card featuring a **successful student story**: student name, short paragraph of their journey, and what they built/achieved.
+  - Include a small “Read more stories” link (can lead to Resources or just scroll).
+- **Business of the Month section**:
+  - A highlighted card titled **“Business of the Month”**:
+    - Business name, 1–2 sentence description, and maybe tags (e.g., #ecommerce, #socialimpact).
+- **Quick Navigation tiles** (large buttons/cards) linking to:
+  - Dashboard (if logged in / mock state), otherwise join page.
+  - Schedule (upcoming sessions).
+  - Resources.
+  - Explore.
+- A simple **footer** with minimal links: About, Contact, Terms (non-functional).
+
+Design:
+- Use cards with subtle shadows, rounded corners.
+- Keep copy short and student-friendly.
+- On mobile, stack hero text above buttons.
+
+---
+
+### 2. Dashboard Page
+
+Goal: Personalized overview of a student’s progress.
+
+Use dummy data to show the following elements on the Dashboard:
+
+Top section (stats overview):
+- Display key metrics in **stat cards**:
+  - **Sessions Attended** – number (e.g., 12).
+  - **Quizzes Completed** – number (e.g., 7).
+  - **Learning Streak (days)** – number (e.g., 5-day streak).
+- Each stat in a small card with icon + label + value.
+
+Learning paths section:
+- Title: **“Your Learning Paths”**.
+- Show a horizontal or grid list of **learning paths**:
+  - Example paths: *Business Fundamentals*, *Marketing & Sales Mastery*, etc.
+  - Each path card shows:
+    - Title
+    - Progress bar (e.g., 60% complete)
+    - “Continue” button that would conceptually take the user to the relevant course in Resources.
+
+Recent activity section:
+- A vertical list of **recent activity items**:
+  - Example: “Completed quiz: Intro to Marketing”, “Joined session: Startup Basics Live Q&A”.
+  - Each item has a timestamp and icon.
+
+Achievements section:
+- Show **Achievement badges**:
+  - Examples:
+    - *Quiz Master* – for multiple quizzes completed.
+    - *Consistent Learner* – for maintaining a streak.
+    - *First Session* – for attending first live session.
+  - Display as small badge cards with icon, title, and short description.
+
+Upcoming sessions + resources:
+- A section titled **“Upcoming Sessions”**:
+  - Card list of next 2–3 sessions pulled from the same dummy data used on the Schedule page.
+- A section titled **“Browse New Sessions / Explore Resources”**:
+  - Links or small cards that lead to the **Schedule** and **Resources** pages.
+
+Design:
+- Organize sections into easily scannable blocks with clear headings.
+- Use a two-column layout on desktop (stats + learning paths on top, recent activity + achievements below), stack into one column on mobile.
+
+---
+
+### 3. Signup / Join Now Page
+
+Goal: Simple onboarding for new students.
+
+Form:
+- Page title: **“Join BizBudz”**.
+- Form fields:
+  - Name
+  - Email
+  - Password
+  - Confirm password
+  - Optional: School/University and Interests.
+- Include buttons:
+  - **“Create Account”**
+  - A link under the form: “Already have an account? Sign in”.
+- No real auth needed; on submit, simulate success (e.g. show a success toast and navigate to Dashboard mock).
+
+Design:
+- Centered card with the form.
+- Simple validation messages (e.g., required fields).
+- Clean, minimal, easy to complete.
+
+---
+
+### 4. Schedule Page
+
+Goal: Let students see and join live tutoring and group study opportunities.
+
+Sections:
+
+**Live Tutoring Sessions (Calendar-like list)**
+- Show a **calendar-like schedule** (can be simplified as a list grouped by date instead of a full calendar widget).
+- Each session item includes:
+  - Session title
+  - Date & time
+  - “Join via Zoom” button (non-functional, can link to `#`)
+  - Short description.
+- Label this section clearly: “Live Tutoring Sessions”.
+
+**Group Study Opportunities with Map**
+- A section titled **“Group Study Near You”**.
+- Use a static or placeholder **map area** (e.g., a box with “Map Placeholder”) showing pins for group study spots.
+- Next to / below the map, list:
+  - Location name
+  - Address/area
+  - Time
+  - “Sign Up” button for each opportunity.
+
+**Sign-up panel**
+- For each session or group study item, include:
+  - A **“Sign Up”** button.
+  - When clicked, show a simple modal or inline message: “You are signed up!” (no real backend).
+
+Design:
+- Divide page into two main sections: “Live Tutoring” and “Group Study”.
+- On desktop, consider two columns: schedule list on left, map + opportunities on right. On mobile, stack them.
+
+---
+
+### 5. Resources Page
+
+Goal: Main hub for learning content: videos, lessons, courses, quizzes, and materials.
+
+Sections:
+
+**Gallery of Student Videos**
+- Title: **“Student Business Stories & Tips”**.
+- Show a grid of **video cards**:
+  - Thumbnail (placeholder image).
+  - Video title.
+  - Short description.
+  - Uploader name.
+- Clicking a card can open a modal with more details (no real video necessary).
+
+**Approved Lessons & Infographic Articles**
+- A list or grid of **lessons/articles**:
+  - Each card: title, short blurb, tag(s), and a “Read” button.
+  - Mark them as “Approved by BizBudz”.
+
+**Courses**
+- A section titled **“Courses”**:
+  - Example: *Business Fundamentals*, *Marketing & Sales Mastery*, *Entrepreneurship 101*.
+  - Each course card shows:
+    - Title
+    - Short description
+    - Progress (if relevant, tied to dashboard dummy data)
+    - “Start” or “Continue” button.
+
+**Quizzes**
+- Each course can have associated **quizzes**:
+  - Show quiz tiles: “Quiz: Intro to Marketing”, etc.
+  - Include a button “Take Quiz”.
+  - You don’t need full quiz logic; a simple placeholder page or modal is enough.
+
+**Downloadable Materials**
+- A section: **“Downloadable Materials”**:
+  - List of items like “Business Plan Template”, “Marketing Funnel Cheat Sheet”.
+  - Each item has a download icon and a “Download” button (can link to `#` no real file needed).
+
+**Voting for Helpful Notes (Badge)**
+- Add a small “Helpful Notes” block:
+  - List a couple of notes with a **thumbs-up/“Helpful” button** and a count.
+  - Highly upvoted notes can show a small **“Top Note” badge**.
+
+Design:
+- Use tabs or clear headings to separate Videos, Lessons, Courses, Quizzes, and Downloads, or just stack sections with strong headings.
+- Keep content in cards for consistency.
+
+---
+
+### 6. Explore Page
+
+Goal: Social discovery of students, notes, and shared resources.
+
+Features:
+
+**Explore Student Profiles / Notes**
+- Show a feed/grid of **posts** that represent notes or short lessons created by students.
+- Each post card includes:
+  - Student name and avatar/initials.
+  - Title of the note/lesson.
+  - Short preview text.
+  - Hashtags (e.g., #marketing, #finance, #startups).
+  - Like button with like count.
+  - Comment button with comment count.
+
+**Popular & Most Helpful Notes**
+- A section or filter at top:
+  - Tabs or dropdown: “Most Recent”, “Most Helpful”, “Popular”.
+  - “Most Helpful” should sort posts by like count (using dummy data).
+
+**Interactions**
+- Each post card must have:
+  - **Like button** (toggle state visually, update count in the UI).
+  - **Comment button** that opens a comments area or modal with dummy comments.
+- Include a small “Give Feedback” text area or modal showing how a student might leave feedback.
+
+**Upload Notes & Videos**
+- A simple **“Share Your Notes”** card or button:
+  - On click, open a modal or inline form with:
+    - Title
+    - Text area for notes
+    - Optional link (e.g., to a video)
+    - Hashtag input (comma separated).
+  - Submitting adds a new post to the feed in the UI state (front-end only).
+
+**Featuring Top Contributors**
+- Highlight **top students**:
+  - A sidebar or section with 2–3 top contributors:
+    - Name
+    - Badge indicator (e.g., “Top Contributor”, “Most Helpful Notes”).
+- Highly liked posts should display a **badge/award** icon on the post card (e.g., “Featured” or “Community Favorite”).
+
+Design:
+- Layout similar to a simple social feed.
+- On desktop, main feed center, with a right sidebar for “Top Contributors” and maybe a “Hashtag Cloud” (list of hashtags with counts).
+- On mobile, stack feed first, then top contributors below.
+
+---
+
+### Additional UX/Design Notes
+
+- Make the navigation bar persistent and highlight the current page.
+- Use consistent button styles across the whole site (primary, secondary).
+- Show simple breadcrumb-like titles at the top of each page (e.g., “Dashboard”, “Schedule”).
+- Even though there’s no real backend, structure the code so that adding APIs later would be straightforward (e.g., components receive data via props or a single mocked data source).
+
+In summary: implement all 6 pages (Home, Dashboard, Signup/Join, Schedule, Resources, Explore) with the functions and sections described above, using clean, student-friendly UI and responsive layout. Use mock data for sessions, courses, notes, and interactions, but wire up all buttons, likes, filters, and forms at the front-end level so the app feels interactive.
