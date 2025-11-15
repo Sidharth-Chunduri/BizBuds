@@ -8,27 +8,19 @@ import { useToast } from "@/hooks/use-toast";
 import { GraduationCap } from "lucide-react";
 import { useAuth } from "@/lib/auth-context";
 
-export default function Join() {
+export default function SignIn() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
-  const { register } = useAuth();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
-    password: "",
-    confirmPassword: "",
-    school: "",
-    interests: ""
+    password: ""
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(false);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
 
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
@@ -38,12 +30,6 @@ export default function Join() {
 
     if (!formData.password) {
       newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
     }
 
     setErrors(newErrors);
@@ -59,19 +45,18 @@ export default function Join() {
 
     setIsLoading(true);
     try {
-      const { confirmPassword, ...registrationData } = formData;
-      await register(registrationData);
+      await login(formData.email, formData.password);
       toast({
-        title: "Account created successfully!",
-        description: "Welcome to BizBudz. Redirecting to your dashboard...",
+        title: "Welcome back!",
+        description: "Successfully signed in. Redirecting to dashboard...",
       });
       setTimeout(() => {
         setLocation("/dashboard");
       }, 1500);
     } catch (error: any) {
       toast({
-        title: "Registration failed",
-        description: error.message || "Please try again with a different email.",
+        title: "Sign in failed",
+        description: error.message || "Please check your email and password.",
         variant: "destructive"
       });
     } finally {
@@ -95,30 +80,15 @@ export default function Join() {
               <GraduationCap className="h-8 w-8 text-primary" />
             </div>
           </div>
-          <CardTitle className="text-3xl font-bold">Join BizBudz</CardTitle>
+          <CardTitle className="text-3xl font-bold">Welcome Back</CardTitle>
           <CardDescription className="text-base">
-            Start your business learning journey today
+            Sign in to your BizBudz account
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-5 skip-tts">
             <div className="space-y-2">
-              <Label htmlFor="name">Full Name *</Label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Enter your name"
-                value={formData.name}
-                onChange={handleChange("name")}
-                data-testid="input-name"
-              />
-              {errors.name && (
-                <p className="text-sm text-destructive" data-testid="error-name">{errors.name}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
+              <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -133,11 +103,11 @@ export default function Join() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password *</Label>
+              <Label htmlFor="password">Password</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="At least 6 characters"
+                placeholder="Enter your password"
                 value={formData.password}
                 onChange={handleChange("password")}
                 data-testid="input-password"
@@ -147,60 +117,21 @@ export default function Join() {
               )}
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirm Password *</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                placeholder="Re-enter your password"
-                value={formData.confirmPassword}
-                onChange={handleChange("confirmPassword")}
-                data-testid="input-confirm-password"
-              />
-              {errors.confirmPassword && (
-                <p className="text-sm text-destructive" data-testid="error-confirm-password">{errors.confirmPassword}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="school">School/University</Label>
-              <Input
-                id="school"
-                type="text"
-                placeholder="Your institution"
-                value={formData.school}
-                onChange={handleChange("school")}
-                data-testid="input-school"
-              />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="interests">Interests</Label>
-              <Input
-                id="interests"
-                type="text"
-                placeholder="e.g., Marketing, E-commerce, Startups"
-                value={formData.interests}
-                onChange={handleChange("interests")}
-                data-testid="input-interests"
-              />
-            </div>
-
             <Button 
               type="submit" 
               className="w-full" 
               size="lg" 
               disabled={isLoading}
-              data-testid="button-create-account"
+              data-testid="button-sign-in"
             >
-              {isLoading ? "Creating Account..." : "Create Account"}
+              {isLoading ? "Signing In..." : "Sign In"}
             </Button>
 
             <p className="text-center text-sm text-muted-foreground">
-              Already have an account?{" "}
-              <Link href="/signin">
-                <a className="text-primary font-medium hover:underline" data-testid="link-sign-in">
-                  Sign in
+              Don't have an account?{" "}
+              <Link href="/join">
+                <a className="text-primary font-medium hover:underline" data-testid="link-join">
+                  Join BizBudz
                 </a>
               </Link>
             </p>

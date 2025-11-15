@@ -136,3 +136,7 @@ export async function seedFirebaseData() {
 
 // Utility function to call from browser console
 (window as any).seedFirebaseData = seedFirebaseData;
+
+// Also make the Firebase auth service available for testing
+import { authService } from './auth';
+(window as any).authService = authService;

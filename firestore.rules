@@ -5,6 +5,8 @@ service cloud.firestore {
     // Users can read/write their own data
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
+      // Allow creation during registration
+      allow create: if request.auth != null && request.auth.uid == userId;
     }
     
     // Sessions are public read, admin write only
@@ -28,6 +30,8 @@ service cloud.firestore {
     // User stats - users can read/write their own
     match /userStats/{document} {
       allow read, write: if request.auth != null && resource.data.userId == request.auth.uid;
+      // Allow creation during registration
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
     }
     
     // Session signups - users can manage their own

@@ -38,13 +38,24 @@ export class FirebaseStorage {
   }
 
   async getUser(id: string): Promise<User | undefined> {
-    const docRef = doc(db, 'users', id);
-    const docSnap = await getDoc(docRef);
-    
-    if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() } as User;
+    try {
+      console.log('Fetching user from Firestore with ID:', id);
+      
+      const docRef = doc(db, 'users', id);
+      const docSnap = await getDoc(docRef);
+      
+      if (docSnap.exists()) {
+        const userData = { id: docSnap.id, ...docSnap.data() } as User;
+        console.log('User found in Firestore:', userData);
+        return userData;
+      } else {
+        console.log('No user document found with ID:', id);
+        return undefined;
+      }
+    } catch (error) {
+      console.error('Error fetching user from Firestore:', error);
+      throw error;
     }
-    return undefined;
   }
 
   async createUser(userData: Omit<User, 'id'>): Promise<User> {
@@ -63,18 +74,30 @@ export class FirebaseStorage {
   }
 
   async createUserWithId(id: string, userData: Omit<User, 'id'>): Promise<User> {
-    const userRef = doc(db, 'users', id);
-    await setDoc(userRef, userData);
-    
-    // Initialize user stats
-    await addDoc(collection(db, 'userStats'), {
-      userId: id,
-      sessionsAttended: 0,
-      quizzesCompleted: 0,
-      learningStreak: 0
-    });
-    
-    return { id, ...userData };
+    try {
+      console.log('Creating Firestore user document with ID:', id, 'Data:', userData);
+      
+      const userRef = doc(db, 'users', id);
+      await setDoc(userRef, userData);
+      console.log('User document created successfully');
+      
+      // Initialize user stats
+      const statsData = {
+        userId: id,
+        sessionsAttended: 0,
+        quizzesCompleted: 0,
+        learningStreak: 0
+      };
+      console.log('Creating user stats:', statsData);
+      
+      await addDoc(collection(db, 'userStats'), statsData);
+      console.log('User stats created successfully');
+      
+      return { id, ...userData };
+    } catch (error) {
+      console.error('Error creating user in Firestore:', error);
+      throw error;
+    }
   }
 
   // Session methods

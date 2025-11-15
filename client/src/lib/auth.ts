@@ -57,6 +57,7 @@ class AuthService {
       
       // Create user document in Firestore (using Firebase UID as document ID)
       const { password, ...userDataWithoutPassword } = userData;
+      
       const newUser = await firebaseStorage.createUserWithId(firebaseUser.uid, userDataWithoutPassword);
       
       const authUser: AuthUser = {
@@ -78,8 +79,9 @@ class AuthService {
       
       // Get user data from Firestore
       const userData = await firebaseStorage.getUser(firebaseUser.uid);
+      
       if (!userData) {
-        throw new Error('User data not found');
+        throw new Error('User data not found in Firestore');
       }
       
       const authUser: AuthUser = {
